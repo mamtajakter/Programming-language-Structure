@@ -1,0 +1,11 @@
+x := 5;
+ans := 0;
+
+pushvar ans;
+
+y := 0;
+ans :=2;
+pushvar ans;
+popvar ans;
+popvar ans
+
