@@ -1,0 +1,8 @@
+Iter returns a pair that contains the first integer of the tree and then 
+a iter function. It does not evaluate until used in a function. When it does,
+it traverses the left side first, and then the right side. Once evaluated the 
+par would look something like More(integer,More(integer,...(Nomore)). This can
+be used to gather entries on nodes of the tree without traversing the tree
+more than once. This is because it is performing lazy evaluation, and while our
+final pair may look like above our first step looks like More(integer, function), 
+where function would again call the iter with the new subtree.

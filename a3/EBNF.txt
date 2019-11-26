@@ -1,0 +1,61 @@
+# Start Rule (8.1)
+interpreter_block ::= { statement | function_decl } EOF
+
+# Statements (8.2)
+statement ::= compound_statement | expr_statement | selection_statement | for_statement | do_while_statement | while_statement | jump_statement
+where:
+compound_statement ::= '{' { statement } '}'
+expr_statement ::= [ assignment_expr ] ';'
+selection_statement ::= 'if' '(' expr ')' statement [ 'else' statement  ]
+for_statement ::= 'for' '(' IDENTIFIER 'in' expr ')' statement
+do_while_statement ::= 'do' statement 'while' '(' expr ')' ';'
+while_statement ::= 'while' '(' expr ')' statement
+jump_statement ::= 'next' ';' | 'break' ';' | 'return' [ expr ] ';'
+
+# Expressions (8.3)
+expr ::= conditional_expr
+assignment_expr ::= conditional_expr [ '=' conditional_expr ]
+conditional_expr ::= logical_or_expr [ '?' conditional_expr 'else' conditional_expr ]
+logical_or_expr ::= logical_or_expr { '|' logical_or_expr }
+logical_and_expr ::= equality_expr { '&' equality_expr }
+equality_expr ::= relational_expr { != relational_expr | == relational_expr }
+relational_expr ::= add_expr { '<' add_expr | '<=' add_expr | '>' add_expr | '>=' add_expr }
+add_expr ::= mult_expr { '+' mult_expr | '-' mult_expr }
+mult_expr ::= seq_expr { '*' seq_expr | '/' seq_expr | '%' seq_expr }
+seq_expr ::= exp_expr [ ':' exp_expr ]
+exp_expr ::= unary_expr [ '^' exp_expr ]
+unary_expr ::= '!' unary_expr | '+' unary_expr | '-' unary_expr | postfix_expr
+postfix_expr ::= primary_expr { '.' IDENTIFIER
+                 | '(' argument_expr_list ')'
+                 | '(' ')'
+                 | '[' [ expr ] { ',' [ expr ] } ']' }
+primary_expr ::= IDENTIFIER | constant | '(' expr ')'
+argument_expr_list ::= argument_expr { ',' argument_expr }
+argument_expr ::= conditional_expr | IDENTIFIER '=' conditional_expr
+constant ::= NUMBER_LITERAL | STRING_LITERAL
+
+# Function Declarations (8.4)
+function_decl ::= 'function' return_type_spec IDENTIFIER param_list compound_statement
+return_type_spec ::= '(' type_spec ')'
+type_spec ::= 'void' [ '$' ]
+              | 'NULL' [ '$' ]
+              | 'logical' [ '$' ]
+              | 'integer' [ '$' ]
+              | 'float' [ '$' ]
+              | 'string' [ '$' ]
+              | 'object' ['object' object_class_spec] [ '$' ]
+              | 'numeric' [ '$' ]
+              | '+' [ '$' ]
+              | '*' [ '$' ]
+              | 'v' { 'v' | 'N' | 'l' | 'i' | 'f' | 's' | 'o' [ object_class_spec ]} [ '$' ]
+              | 'N' { 'v' | 'N' | 'l' | 'i' | 'f' | 's' | 'o' [ object_class_spec ]} [ '$' ]
+              | 'l' { 'v' | 'N' | 'l' | 'i' | 'f' | 's' | 'o' [ object_class_spec ]} [ '$' ]
+              | 'i' { 'v' | 'N' | 'l' | 'i' | 'f' | 's' | 'o' [ object_class_spec ]} [ '$' ]
+              | 'f' { 'v' | 'N' | 'l' | 'i' | 'f' | 's' | 'o' [ object_class_spec ]} [ '$' ]
+              | 's' { 'v' | 'N' | 'l' | 'i' | 'f' | 's' | 'o' [ object_class_spec ]} [ '$' ]
+              | 'o' [ object_class_spec ] { 'v' | 'N' | 'l' | 'i' | 'f' | 's' | 'o' [ object_class_spec ]} [ '$' ]
+object_class_spec ::= '<' IDENTIFIER '>'
+param_list ::= '(' 'void' ')' | '(' param_spec { ',' param_spec } ')'
+param_spec ::= type_spec IDENTIFIER
+               | '[' type_spec IDENTIFIER '=' constant ']'
+               | '[' type_spec IDENTIFIER '=' IDENTIFIER ']'

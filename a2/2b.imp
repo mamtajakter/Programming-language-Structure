@@ -1,0 +1,8 @@
+x := 10;
+y := 20;
+pushvar x;
+x := 3;
+pushvar x;
+y := 100;
+popvar x;
+ans := x+y

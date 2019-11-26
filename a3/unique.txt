@@ -1,0 +1,15 @@
+- No Types
+- 64 bit lengths are defualt
+- Everything is a vector
+- No bit operations (<<, >>, etc)
+- Dynamic interpreted lambdas
+- Multiline strings ("here document")
+- Sequence operator
+- auto casting
+- default division and module as float
+- negative sign with no parenthesis (1--1=2)
+- Overflow safety
+- Comparative expressions auto cast
+- Variable names may contain numbers (if not first)
+- ls provides all predefined variables
+

@@ -1,0 +1,7 @@
+x := 5;                                                                        
+y := 3;                                                                        
+pushheap;                                                                      
+y := 10;
+x := 10;
+popheap x;                                                                      
+ans := x + y

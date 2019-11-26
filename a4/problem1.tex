@@ -1,0 +1,37 @@
+\documentclass[11pt]{article}
+\usepackage{geometry}
+\usepackage{graphicx,epsfig}
+\usepackage{amssymb}
+\usepackage{float}
+
+\begin{document}
+\title{CIS 624 Assignment 4 Problem 1}
+
+\author{Steven Walton}
+\maketitle 
+
+\noindent
+$T := \lambda xy.$ $x$ \\
+$F := \lambda xy.$ $y$ \\
+$IF := \lambda btf.$ $b$ $t$ $f$\\
+$AND := \lambda ab.$ $IF$ $a$ $b$ $F$\\
+$PRED := \lambda nfx.$ $n (\lambda g.$ $\lambda h.$ $h ( g$ $f )) (\lambda u.$ $x) (\lambda u.$ $u)$\\
+$SUB := \lambda mn.$ $n$ $PRED$ $m$ \\
+$ISZERO := \lambda n.$ $n (\lambda x.$ $F) T$ \\
+$ISEQUAL := ADD(ISZERO(SUB$ $a$ $b)$ $ISZERO(SUB$ $b$ $a))$ \\
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+
+\end{document}
+
+
+
+

@@ -1,0 +1,13 @@
+If pop did not copy one value from the current heap it would
+undo both assignments. EG:
+x := 1;
+y := 2;
+x := 3;
+y := 4;
+popheap x
+
+results with {x=1,y=2}
+
+By copying one value we can retain more information than if we did not.
+This allows us to have more functionality in our code and
+to actually do something with our new updated value.
